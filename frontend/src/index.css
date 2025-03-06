@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+.lekton-font {
+  font-family: "Lekton", sans-serif;
+}
+body {
+  font-family: "Lekton", sans-serif;
+}
