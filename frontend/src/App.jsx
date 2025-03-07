@@ -50,7 +50,7 @@ function App() {
               window.location.href = '/login'
             }}
           >
-            Logout
+            Logout !
           </h1>
         </div>
         <div className="rounded-lg flex flex-col justify-start items-center p-5 py-8 mt-8 bg-white shadow-md min-h-99/100 min-w-6/7 gap-4">
