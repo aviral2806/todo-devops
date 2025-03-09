@@ -12,13 +12,12 @@ public class TodoBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TodoBackendApplication.class, args);
 	}
-	
-	
+
 	@Bean
 	public WebMvcConfigurer CorsConfigurer() {
 		return new WebMvcConfigurer() {
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost:5173");
+				registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://54.166.46.202:5173");
 			}
 		};
 	}

@@ -1,5 +1,4 @@
 ---
-## docker compose file to start up front end and postgres db
 version: '3.7'
 services:
   frontend:
