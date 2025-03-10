@@ -2,19 +2,12 @@
   hosts: all
   become: true
 
+  roles:
+    - role: geerlingguy.docker
+      vars:
+        docker_install_compose: true
+
   tasks:
-    - name: Install docker
-      ansible.builtin.apt:
-        name: docker.io
-        state: present
-      when: ansible_os_family == 'Debian'
-
-    - name: Install docker compose
-      ansible.builtin.apt:
-        name: docker-compose
-        state: present
-      when: ansible_os_family == 'Debian'
-
     - name: Ensure dev folder exists
       ansible.builtin.file:
         path: /home/ubuntu/app

@@ -6,6 +6,9 @@ COPY . .
 RUN npm install esbuild@0.24.2 --save-dev
 RUN npm run build
 
+ARG VITE_API_URL
+ENV VITE_API_URL=${VITE_API_URL}
+
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY <<EOF /etc/nginx/conf.d/default.conf
