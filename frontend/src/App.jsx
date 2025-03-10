@@ -10,7 +10,7 @@ import { squircle } from 'ldrs'
 
 function App() {
 
-  const { data: todos, isFetched, isLoading } = useQuery({
+  const { data: todos, isFetched, isError, isLoading } = useQuery({
     queryKey: ['test'],
     queryFn: todoApi.getTodos,
   })
@@ -68,7 +68,7 @@ function App() {
               color="black"
             ></l-squircle>
           ) : (
-            isFetched && todos.map((task, index) => (
+            isFetched && !isError && todos.map((task, index) => (
               <AnimatePresence key={index}>
                 <Task task={task} handleUpdate={handleUpdateTask} />
               </AnimatePresence>

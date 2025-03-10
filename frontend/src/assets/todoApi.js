@@ -3,6 +3,7 @@ const apiUrl = import.meta.env.VITE_API_URL + 'todos'
 export const todoApi = {
     getTodos: async () => {
         const response = await axios.get(apiUrl)
+        console.log(apiUrl)
         return response.data
     },
     addTodos: async (newTask) => {
