@@ -68,7 +68,7 @@ function App() {
               color="black"
             ></l-squircle>
           ) : (
-            isFetched && !isError && todos.map((task, index) => (
+            isFetched && !isError && todos && todos.map((task, index) => (
               <AnimatePresence key={index}>
                 <Task task={task} handleUpdate={handleUpdateTask} />
               </AnimatePresence>

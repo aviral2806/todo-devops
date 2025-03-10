@@ -2,8 +2,8 @@ import axios from 'axios'
 const apiUrl = import.meta.env.VITE_API_URL + 'todos'
 export const todoApi = {
     getTodos: async () => {
-        const response = await axios.get(apiUrl)
         console.log(apiUrl)
+        const response = await axios.get(apiUrl)
         return response.data
     },
     addTodos: async (newTask) => {
