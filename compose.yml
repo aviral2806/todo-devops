@@ -4,7 +4,7 @@ services:
   frontend:
     image: aviral2806/todo-react-app:latest
     ports:
-      - 5173:80
+      - 5173:5173
     depends_on:
       - backend
       - db

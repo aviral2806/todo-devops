@@ -1,8 +1,9 @@
 import axios from 'axios'
-const apiUrl = import.meta.env.VITE_API_URL + 'todos'
+const apiUrl = import.meta.env.VITE_API_URL;
 export const todoApi = {
     getTodos: async () => {
-        console.log(apiUrl)
+        console.log("api url " + apiUrl)
+        console.log("Vite env" + JSON.stringify(import.meta.env))
         const response = await axios.get(apiUrl)
         return response.data
     },
