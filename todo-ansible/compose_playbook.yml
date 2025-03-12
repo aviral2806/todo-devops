@@ -36,6 +36,6 @@
   handlers:
     - name: Restart docker compose
       ansible.builtin.command:
-        cmd: docker-compose up --env-file /.env -d
+        cmd: docker-compose up -e VITE_API_URL=http://{{ ip_address }}:8080/todos/ -d
         chdir: /home/ubuntu/app
       when: ansible_os_family == 'Debian'
