@@ -17,7 +17,8 @@ public class TodoBackendApplication {
 	public WebMvcConfigurer CorsConfigurer() {
 		return new WebMvcConfigurer() {
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://54.166.46.202:5173");
+				registry.addMapping("/**").allowedMethods("*").allowedOrigins("*").allowedHeaders("*")
+						.allowCredentials(false);
 			}
 		};
 	}
