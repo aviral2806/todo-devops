@@ -92,7 +92,7 @@ jobs:
       - name: Deploy using ansible
         uses: dawidd6/action-ansible-playbook@v3
         with:
-          playbook: ./todo-ansible/compose_playbook.yml
+          playbook: compose_playbook.yml
           directory: ./todo-ansible
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           inventory: |
@@ -111,7 +111,7 @@ jobs:
       - name: Deploy using ansible
         uses: dawidd6/action-ansible-playbook@v3
         with:
-          playbook: ./todo-ansible/compose_playbook.yml
+          playbook: compose_playbook.yml
           directory: ./todo-ansible
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           inventory: |
@@ -130,7 +130,7 @@ jobs:
       - name: Deploy using ansible
         uses: dawidd6/action-ansible-playbook@v3
         with:
-          playbook: ./todo-ansible/compose_playbook.yml
+          playbook: compose_playbook.yml
           directory: ./todo-ansible
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           inventory: |
