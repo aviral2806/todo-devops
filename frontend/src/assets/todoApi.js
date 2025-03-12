@@ -12,15 +12,15 @@ export const todoApi = {
         return response.data
     },
     updateTodos: async (task) => {
-        const response = await axios.put(`${apiUrl}/${task.id}`, task)
+        const response = await axios.put(`${apiUrl}${task.id}`, task)
         return response.data
     },
     toggleDone: async (id) => {
-        const response = await axios.patch(apiUrl + `/${id}`)
+        const response = await axios.patch(apiUrl + `${id}`)
         return response.data
     },
     deleteTodo: async (id) => {
-        const response = await axios.delete(apiUrl + `/${id}`)
+        const response = await axios.delete(apiUrl + `${id}`)
         return response.data
     }
 }

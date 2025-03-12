@@ -1,0 +1,6 @@
+- name: Install docker on instances
+  hosts: all
+  become: true
+  roles:
+    - geerlingguy.docker
+    - andrewrothstein.docker-compose

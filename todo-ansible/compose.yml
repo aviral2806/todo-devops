@@ -1,0 +1,43 @@
+---
+version: '3.7'
+services:
+  frontend:
+    image: aviral2806/todo-react-app:latest
+    ports:
+      - 5173:5173
+    depends_on:
+      - backend
+      - db
+    environment:
+      - VITE_API_URL=http://54.166.46.202:8080/todos/
+    networks:
+      - todo-network
+  backend:
+    image: aviral2806/todo-backend:latest
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    networks:
+      - todo-network
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/tododb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=yourpassword
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=yourpassword
+      - POSTGRES_DB=tododb
+    networks:
+      - todo-network
+      
+networks:
+  todo-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
