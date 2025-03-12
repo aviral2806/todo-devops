@@ -2,5 +2,6 @@
   hosts: all
   become: true
   roles:
-    - geerlingguy.docker
-    - andrewrothstein.docker-compose
+    - role: geerlingguy.docker
+      vars:
+        docker_install_compose: true

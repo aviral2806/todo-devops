@@ -80,3 +80,22 @@ jobs:
           file: ./todo-backend/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-backend:latest
+
+  deploy:
+    needs: [build-frontend, build-backend]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy using ansible
+        uses: dawidd6/action-ansible-playbook@v3
+        with:
+          playbook: todo-ansible/compose_playbook.yml
+          directory: todo-ansible
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          inventory: |
+            [all]
+            ubuntu@${{ secrets.IP_ADDRESS }}
+          options: >
+            -e "ip_address"="${{ secrets.IP_ADDRESS }}"

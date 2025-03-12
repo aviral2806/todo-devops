@@ -9,7 +9,7 @@ services:
       - backend
       - db
     environment:
-      - VITE_API_URL=http://54.166.46.202:8080/todos/
+      - VITE_API_URL=${VITE_API_URL}
     networks:
       - todo-network
   backend:

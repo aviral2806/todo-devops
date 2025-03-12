@@ -1,12 +1,6 @@
 - name: Run docker compose
   hosts: all
   become: true
-
-  roles:
-    - role: geerlingguy.docker
-      vars:
-        docker_install_compose: true
-
   tasks:
     - name: Ensure dev folder exists
       ansible.builtin.file:
@@ -27,6 +21,12 @@
         chdir: /home/ubuntu/app
       when: ansible_os_family == 'Debian'
 
+    - name: Create env file
+      ansible.builtin.copy:
+        dest: /home/ubuntu/app/.env
+        content: |
+          VITE_API_URL=http://{{ ip_address }}:8080/todos/
+
     - name: Run docker compose
       ansible.builtin.command:
         cmd: docker-compose up -d
@@ -36,6 +36,6 @@
   handlers:
     - name: Restart docker compose
       ansible.builtin.command:
-        cmd: docker-compose up -d
+        cmd: docker-compose up --env-file /.env -d
         chdir: /home/ubuntu/app
       when: ansible_os_family == 'Debian'
