@@ -82,7 +82,8 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-backend:latest
 
   deploy:
-    needs: [build-frontend, build-backend]
+    needs: [build-frontend, build-backend, check-changes]
+    if: ${{ needs.check-changes.outputs.frontend == 'true' || needs.check-changes.outputs.backend == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
