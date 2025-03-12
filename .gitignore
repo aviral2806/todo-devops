@@ -1,5 +1,4 @@
-# ignore tf files and folder
 terraform/
-
-# ignore env file
 /frontend/.env
+!terraform/main.tf
+!terraform/data.tf
